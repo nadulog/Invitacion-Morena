@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#071029" />
+    <meta name="description" content="Hay una rosa encantada esperando esta noche 🌹 Te invito a celebrar mis XV el sábado 6 de febrero. ¡Me haría muy feliz que estés! ✨" />
+    <link rel="canonical" href="https://bloomdate-morena-15.netlify.app/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://bloomdate-morena-15.netlify.app/" />
+    <meta property="og:locale" content="es_AR" />
+    <meta property="og:site_name" content="Mis XV · Morena" />
+    <meta property="og:title" content="Mis XV · Morena" />
+    <meta property="og:description" content="Hay una rosa encantada esperando esta noche 🌹 Te invito a celebrar mis XV el sábado 6 de febrero. ¡Me haría muy feliz que estés! ✨" />
+    <meta property="og:image" content="https://bloomdate-morena-15.netlify.app/assets/whatsapp-morena.jpg?v=1" />
+    <meta property="og:image:secure_url" content="https://bloomdate-morena-15.netlify.app/assets/whatsapp-morena.jpg?v=1" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Mis XV, Morena, en letras doradas sobre un salón de castillo a la luz de la luna" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Mis XV · Morena" />
+    <meta name="twitter:description" content="Hay una rosa encantada esperando esta noche 🌹 Te invito a celebrar mis XV el sábado 6 de febrero. ¡Me haría muy feliz que estés! ✨" />
+    <meta name="twitter:image" content="https://bloomdate-morena-15.netlify.app/assets/whatsapp-morena.jpg?v=1" />
+    <title>Mis XV · Morena</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Cinzel:wght@500;600&family=Great+Vibes&display=swap"
+    />
+    <link rel="preload" as="image" href="assets/portada.webp" fetchpriority="high" />
+    <link rel="stylesheet" href="styles.css?v=1" />
+  </head>
+  <body>
+    <main class="invitation" id="invitation" aria-label="Invitación a los XV de Morena">
+      <section class="panel panel--cover" aria-labelledby="cover-title" style="--bg: url(assets/portada.webp)">
+        <div class="panel__stage">
+          <h1 id="cover-title" class="sr-only">Mis XV, Morena</h1>
+          <img src="assets/portada.webp" alt="Mis XV. Morena, en letras doradas, con la rosa encantada bajo una campana de cristal" width="941" height="1672" fetchpriority="high" />
+          <span class="cover__shine" aria-hidden="true"></span>
+          <span class="rose-glow" aria-hidden="true"></span>
+          <div class="petals" aria-hidden="true">
+            <i style="--x: 18%; --d: 0s; --t: 9s; --s: 1"></i>
+            <i style="--x: 72%; --d: 2.5s; --t: 11s; --s: 0.8"></i>
+            <i style="--x: 40%; --d: 5s; --t: 10s; --s: 0.9"></i>
+            <i style="--x: 86%; --d: 7s; --t: 12s; --s: 0.7"></i>
+            <i style="--x: 8%; --d: 4s; --t: 13s; --s: 0.75"></i>
+          </div>
+          <div class="sparkles" aria-hidden="true">
+            <i style="--x: 50%; --y: 70%; --d: 0s"></i>
+            <i style="--x: 44%; --y: 76%; --d: 1.2s"></i>
+            <i style="--x: 57%; --y: 74%; --d: 2.1s"></i>
+            <i style="--x: 22%; --y: 34%; --d: 0.6s"></i>
+            <i style="--x: 80%; --y: 30%; --d: 2.8s"></i>
+            <i style="--x: 48%; --y: 64%; --d: 1.7s"></i>
+            <i style="--x: 52%; --y: 18%; --d: 3.3s"></i>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel panel--guests reveal" aria-labelledby="guests-title" style="--bg: url(assets/invitados.webp)">
+        <div class="panel__stage">
+          <h2 id="guests-title" class="sr-only">Esta invitación es para</h2>
+          <img src="assets/invitados.webp" alt="" width="941" height="1672" loading="lazy" />
+          <p class="guest-name" id="nombres-invitados"></p>
+          <p class="guest-places" id="cantidad-lugares"></p>
+        </div>
+      </section>
+
+      <section class="panel panel--countdown reveal" aria-labelledby="countdown-title" style="--bg: url(assets/cuenta-regresiva.webp)">
+        <div class="panel__stage">
+          <h2 id="countdown-title" class="sr-only">Faltan para mis XV</h2>
+          <img src="assets/cuenta-regresiva.webp" alt="" width="941" height="1672" loading="lazy" />
+          <span class="pendulum" aria-hidden="true"></span>
+          <div class="countdown" role="timer" aria-label="Tiempo restante para la fiesta">
+            <span class="countdown__value" id="cdDays">00</span>
+            <span class="countdown__value" id="cdHours">00</span>
+            <span class="countdown__value" id="cdMinutes">00</span>
+            <span class="countdown__value" id="cdSeconds">00</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Fecha: el espejo está empañado por el hechizo; se raspa con el dedo para ver la fecha -->
+      <section class="panel panel--date reveal" id="datePanel" aria-labelledby="date-title" style="--bg: url(assets/fecha-hora.webp)">
+        <div class="panel__stage">
+          <h2 id="date-title" class="sr-only">Fecha y hora</h2>
+          <img src="assets/fecha-hora.webp" alt="Sábado 06 de febrero de 2027, de 20:00 a 05:00 horas" width="941" height="1672" loading="lazy" />
+          <div class="mirror" id="mirror">
+            <canvas class="mirror__canvas" id="mirrorCanvas" aria-label="Pasá el dedo sobre el espejo para descubrir la fecha"></canvas>
+            <div class="magic-trail" id="magicTrail" aria-hidden="true"></div>
+            <div class="mirror__guide" aria-hidden="true">
+              <span class="mirror__rose">🌹</span>
+              <strong>Pasá tu dedo<br />sobre el espejo</strong>
+              <div class="finger-demo"><b>☝</b><i></i></div>
+            </div>
+            <button class="mirror__skip" id="mirrorSkip" type="button">Revelar fecha</button>
+          </div>
+          <a
+            class="hotspot hotspot--calendar"
+            href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Mis%20XV%20%C2%B7%20Morena&amp;dates=20270206T230000Z/20270207T080000Z&amp;details=%C2%A1Te%20espero%20para%20celebrar%20mis%20XV!%20Dress%20code%3A%20elegante%2C%20vestimenta%20%C3%BAnicamente%20negra.&amp;location=La%20F%C3%A1brica"
+            target="_blank"
+            rel="noreferrer"
+          ><span class="sr-only">Agregar al calendario</span></a>
+        </div>
+      </section>
+
+      <section class="panel panel--map reveal" aria-labelledby="map-title" style="--bg: url(assets/como-llegar.webp)">
+        <div class="panel__stage">
+          <h2 id="map-title" class="sr-only">Cómo llegar</h2>
+          <img src="assets/como-llegar.webp" alt="Cómo llegar. La Fábrica" width="941" height="1672" loading="lazy" />
+          <a class="hotspot hotspot--map" href="#" data-pending="La ubicación estará disponible muy pronto" target="_blank" rel="noreferrer">
+            <span class="sr-only">Ver ubicación en Google Maps</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="panel panel--dress reveal" aria-labelledby="dress-title" style="--bg: url(assets/dress-code.webp)">
+        <div class="panel__stage">
+          <h2 id="dress-title" class="sr-only">Dress code</h2>
+          <img src="assets/dress-code.webp" alt="Dress code elegante. Vestimenta únicamente negra" width="941" height="1672" loading="lazy" />
+        </div>
+      </section>
+
+      <section class="panel panel--gifts reveal" aria-labelledby="gifts-title" style="--bg: url(assets/regalos.webp)">
+        <div class="panel__stage">
+          <h2 id="gifts-title" class="sr-only">Regalos</h2>
+          <img src="assets/regalos.webp" alt="Regalos. Tu presencia es mi mejor regalo. Si deseás hacerme un presente" width="941" height="1672" loading="lazy" />
+          <span class="seal-glow" aria-hidden="true"></span>
+          <button class="hotspot hotspot--gifts" id="openGifts" type="button"><span class="sr-only">Ver datos</span></button>
+        </div>
+      </section>
+
+      <section class="panel panel--music reveal" aria-labelledby="music-title" style="--bg: url(assets/musica.webp)">
+        <div class="panel__stage">
+          <h2 id="music-title" class="sr-only">Música</h2>
+          <img src="assets/musica.webp" alt="Música. Ayudame a crear la playlist de esa noche" width="941" height="1672" loading="lazy" />
+          <div class="notes" aria-hidden="true">
+            <i style="--x: 30%; --y: 58%; --d: 0s">♪</i>
+            <i style="--x: 24%; --y: 62%; --d: 1.3s">♫</i>
+            <i style="--x: 36%; --y: 60%; --d: 2.4s">♪</i>
+          </div>
+          <a
+            class="hotspot hotspot--music"
+            href="https://open.spotify.com/playlist/6N1XBBSJoaz30ZcaPVRr1j?si=5XFiYIuoRDeAkvVdjWEEiQ&amp;utm_source=whatsapp&amp;pt=c17a3e83ff4fdd207e1756e18c30a914&amp;pi=aLHIrqUWRE6YJ"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <span class="sr-only">Agregar canción</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="panel panel--bloomkeep reveal" aria-labelledby="bloomkeep-title" style="--bg: url(assets/bloomkeep.webp)">
+        <div class="panel__stage">
+          <h2 id="bloomkeep-title" class="sr-only">BloomKeep</h2>
+          <img src="assets/bloomkeep.webp" alt="BloomKeep. Cada recuerdo será parte de esta historia. Compartí tus fotos durante la fiesta" width="941" height="1671" loading="lazy" />
+          <a class="hotspot hotspot--bloomkeep" href="https://app.bloomkeep.site/morena-15" target="_blank" rel="noreferrer">
+            <span class="sr-only">Abrir BloomKeep</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="panel panel--rsvp reveal" aria-labelledby="rsvp-title" style="--bg: url(assets/confirmacion.webp)">
+        <div class="panel__stage">
+          <h2 id="rsvp-title" class="sr-only">Confirmación de asistencia</h2>
+          <img src="assets/confirmacion.webp" alt="Confirmación de asistencia. ¿Nos acompañás a vivir esta noche encantada?" width="941" height="1671" loading="lazy" />
+          <a class="hotspot hotspot--rsvp" id="boton-confirmar" href="#" data-pending="Para confirmar, abrí el link personalizado que te enviaron">
+            <span class="sr-only">Confirmar asistencia</span>
+          </a>
+        </div>
+      </section>
+
+      <footer class="footer" aria-label="BloomDate y redes sociales">
+        <div class="footer__art">
+          <img src="assets/footer-bloomdate.webp" alt="Hecho con amor por BloomDate" width="2172" height="724" loading="lazy" />
+          <a class="footer-link footer-link--whatsapp" href="https://wa.me/541140436324" target="_blank" rel="noreferrer" aria-label="WhatsApp de BloomDate"></a>
+          <a class="footer-link footer-link--instagram" href="https://www.instagram.com/bloomdate.invitaciones/" target="_blank" rel="noreferrer" aria-label="Instagram de BloomDate"></a>
+          <a class="footer-link footer-link--website" href="https://bloomdate-site.netlify.app/" target="_blank" rel="noreferrer" aria-label="Sitio web de BloomDate"></a>
+        </div>
+      </footer>
+
+      <button class="audio-toggle" id="audioToggle" type="button" aria-label="Reproducir música" aria-pressed="false">
+        <span class="audio-toggle__ring" aria-hidden="true"></span>
+        <svg class="audio-toggle__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V6l10-2v12" /><circle cx="6.5" cy="18" r="2.5" /><circle cx="16.5" cy="16" r="2.5" /></svg>
+        <span class="audio-toggle__bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      </button>
+      <audio id="invitationAudio" src="assets/musica.m4a?v=1" loop preload="auto"></audio>
+    </main>
+
+    <dialog class="gift-modal" id="giftModal" aria-labelledby="giftTitle">
+      <div class="gift-card">
+        <button class="gift-card__close" type="button" data-close aria-label="Cerrar">✕</button>
+        <span class="gift-card__seal" aria-hidden="true">🌹</span>
+        <h3 class="gift-card__title" id="giftTitle">Datos para transferir</h3>
+        <span class="gift-card__line" aria-hidden="true"></span>
+
+        <dl class="gift-card__data">
+          <div class="gift-row">
+            <dt>Alias</dt>
+            <dd>morena.11.m</dd>
+            <button type="button" class="copy-btn" data-copy="morena.11.m" data-msg="Alias copiado">Copiar</button>
+          </div>
+          <div class="gift-row gift-row--plain">
+            <dt>Titular</dt>
+            <dd>Moreno Moreno</dd>
+          </div>
+        </dl>
+        <p class="gift-card__thanks">¡Gracias por ser parte!</p>
+      </div>
+    </dialog>
+
+    <p class="toast" id="toast" role="status" aria-live="polite"></p>
+
+    <script src="script.js?v=1"></script>
+    <script src="assets/invitation-personalization.js?v=1"></script>
+  </body>
+</html>
