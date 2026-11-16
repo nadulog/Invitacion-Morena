@@ -281,6 +281,10 @@ img { display: block; max-width: 100%; }
 }
 
 .mirror.is-revealed { opacity: 0; pointer-events: none; }
+
+/* Hasta descubrir la fecha no se puede seguir bajando */
+.invitation.is-locked .panel--date ~ .panel,
+.invitation.is-locked .panel--date ~ .footer { display: none; }
 .mirror.is-gone { display: none; }
 
 .mirror__canvas {

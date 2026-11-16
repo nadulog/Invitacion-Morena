@@ -38,6 +38,7 @@
 
   /* ---------- Espejo encantado: se raspa para ver la fecha ---------- */
   const datePanel = document.getElementById("datePanel");
+  const invitation = document.getElementById("invitation");
   const mirror = document.getElementById("mirror");
   const canvas = document.getElementById("mirrorCanvas");
   const ctx = canvas.getContext("2d", { willReadFrequently: true });
@@ -110,6 +111,7 @@
     try { sessionStorage.setItem(storageKey, "1"); } catch {}
     mirror.classList.add("is-revealed");
     datePanel.classList.add("is-unlocked");
+    invitation.classList.remove("is-locked");
     if (navigator.vibrate) navigator.vibrate(18);
     setTimeout(() => mirror.classList.add("is-gone"), reducedMotion ? 0 : 1000);
   };
@@ -196,44 +198,21 @@
     canvas.addEventListener("pointercancel", stopDrawing);
     document.getElementById("mirrorSkip").addEventListener("click", finishReveal);
 
-    /* Bloqueo: no se puede seguir bajando hasta descubrir la fecha */
-    const lockLimit = () => datePanel.getBoundingClientRect().bottom + window.scrollY - window.innerHeight;
+    /* Bloqueo: hasta descubrir la fecha, las secciones siguientes están ocultas
+       (la página termina en fecha y hora; no hay que frenar el scroll a la fuerza). */
+    invitation.classList.add("is-locked");
     let hintAt = 0;
     const hint = () => {
-      if (Date.now() - hintAt < 3000) return;
+      if (revealed || Date.now() - hintAt < 3000) return;
+      const atEnd = window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 4;
+      if (!atEnd) return;
       hintAt = Date.now();
       showToast("Raspá el espejo para descubrir la fecha 🌹");
     };
-    const atLimit = () => window.scrollY >= lockLimit() - 1;
-
-    window.addEventListener("scroll", () => {
-      if (revealed) return;
-      const max = lockLimit();
-      if (window.scrollY > max + 1) {
-        window.scrollTo(0, max);
-        hint();
-      }
-    }, { passive: true });
-
-    // Frena el gesto antes de que la página se mueva (celular y rueda del mouse)
     let touchY = 0;
     window.addEventListener("touchstart", (event) => { touchY = event.touches[0].clientY; }, { passive: true });
-    window.addEventListener("touchmove", (event) => {
-      if (revealed) return;
-      const y = event.touches[0].clientY;
-      const goingDown = y < touchY;
-      touchY = y;
-      if (goingDown && atLimit() && event.cancelable) {
-        event.preventDefault();
-        hint();
-      }
-    }, { passive: false });
-    window.addEventListener("wheel", (event) => {
-      if (!revealed && event.deltaY > 0 && atLimit()) {
-        event.preventDefault();
-        hint();
-      }
-    }, { passive: false });
+    window.addEventListener("touchmove", (event) => { if (event.touches[0].clientY < touchY - 10) hint(); }, { passive: true });
+    window.addEventListener("wheel", (event) => { if (event.deltaY > 0) hint(); }, { passive: true });
   }
 
   /* ---------- Música de fondo ---------- */
