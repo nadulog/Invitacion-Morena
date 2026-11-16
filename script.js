@@ -195,6 +195,45 @@
     canvas.addEventListener("pointerup", stopDrawing);
     canvas.addEventListener("pointercancel", stopDrawing);
     document.getElementById("mirrorSkip").addEventListener("click", finishReveal);
+
+    /* Bloqueo: no se puede seguir bajando hasta descubrir la fecha */
+    const lockLimit = () => datePanel.getBoundingClientRect().bottom + window.scrollY - window.innerHeight;
+    let hintAt = 0;
+    const hint = () => {
+      if (Date.now() - hintAt < 3000) return;
+      hintAt = Date.now();
+      showToast("Raspá el espejo para descubrir la fecha 🌹");
+    };
+    const atLimit = () => window.scrollY >= lockLimit() - 1;
+
+    window.addEventListener("scroll", () => {
+      if (revealed) return;
+      const max = lockLimit();
+      if (window.scrollY > max + 1) {
+        window.scrollTo(0, max);
+        hint();
+      }
+    }, { passive: true });
+
+    // Frena el gesto antes de que la página se mueva (celular y rueda del mouse)
+    let touchY = 0;
+    window.addEventListener("touchstart", (event) => { touchY = event.touches[0].clientY; }, { passive: true });
+    window.addEventListener("touchmove", (event) => {
+      if (revealed) return;
+      const y = event.touches[0].clientY;
+      const goingDown = y < touchY;
+      touchY = y;
+      if (goingDown && atLimit() && event.cancelable) {
+        event.preventDefault();
+        hint();
+      }
+    }, { passive: false });
+    window.addEventListener("wheel", (event) => {
+      if (!revealed && event.deltaY > 0 && atLimit()) {
+        event.preventDefault();
+        hint();
+      }
+    }, { passive: false });
   }
 
   /* ---------- Música de fondo ---------- */
