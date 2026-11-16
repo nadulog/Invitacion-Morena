@@ -36,24 +36,6 @@
   tick();
   setInterval(tick, 1000);
 
-  /* ---------- Aparición al hacer scroll ---------- */
-  const reveals = document.querySelectorAll(".reveal");
-  if ("IntersectionObserver" in window) {
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add("is-visible");
-          io.unobserve(entry.target);
-        });
-      },
-      { threshold: 0.18 }
-    );
-    reveals.forEach((el) => io.observe(el));
-  } else {
-    reveals.forEach((el) => el.classList.add("is-visible"));
-  }
-
   /* ---------- Espejo encantado: se raspa para ver la fecha ---------- */
   const datePanel = document.getElementById("datePanel");
   const mirror = document.getElementById("mirror");
