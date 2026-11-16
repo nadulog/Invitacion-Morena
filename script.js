@@ -23,7 +23,7 @@
   new MutationObserver(fitGuestNames).observe(guestEl, { childList: true, characterData: true, subtree: true });
 
   /* ---------- Cuenta regresiva ---------- */
-  const target = new Date("2027-02-06T20:00:00-03:00").getTime();
+  const target = new Date("2027-02-06T21:00:00-03:00").getTime();
   const cd = ["cdDays", "cdHours", "cdMinutes", "cdSeconds"].map((id) => document.getElementById(id));
   const pad = (n) => String(n).padStart(2, "0");
   const tick = () => {
